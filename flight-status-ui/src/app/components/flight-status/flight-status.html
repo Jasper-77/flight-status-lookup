@@ -1,0 +1,96 @@
+<mat-card>
+
+  <h2>Flight Status Lookup</h2>
+
+<form [formGroup]="form" (ngSubmit)="search()">
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Flight Number</mat-label>
+
+      <input
+        matInput
+        formControlName="flightNumber">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Flight Date</mat-label>
+
+        <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="date">
+
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="picker">
+        </mat-datepicker-toggle>
+
+        <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+
+    <button
+        type="submit"
+        mat-raised-button
+        color="primary">
+        Search
+    </button>
+
+  </form>
+
+</mat-card>
+
+<mat-card *ngIf="loading">
+  <mat-spinner diameter="40"></mat-spinner>
+</mat-card>
+
+<mat-card *ngIf="errorMessage">
+  {{ errorMessage }}
+</mat-card>
+
+<mat-card *ngIf="result" class="result-card">
+
+  <h2 [class]="getStatusClass(result.status)">
+    {{ result.status }}
+  </h2>
+
+  <p>
+    <strong>Airline:</strong>
+    {{ result.airline }}
+  </p>
+
+  <p>
+    <strong>Flight:</strong>
+    {{ result.flightNumber }}
+  </p>
+
+  <p>
+    <strong>Route:</strong>
+    {{ result.departureAirport }} →
+    {{ result.arrivalAirport }}
+  </p>
+
+  <p>
+    <strong>Provider:</strong>
+    {{ result.provider }}
+  </p>
+
+  <p *ngIf="result.gate">
+    <strong>Gate:</strong>
+    {{ result.gate }}
+  </p>
+
+  <p *ngIf="result.terminal">
+    <strong>Terminal:</strong>
+    {{ result.terminal }}
+  </p>
+
+  <p *ngIf="result.delayReason">
+    <strong>Delay Reason:</strong>
+    {{ result.delayReason }}
+  </p>
+
+</mat-card>
