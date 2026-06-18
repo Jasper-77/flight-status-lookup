@@ -11,6 +11,17 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.Converters.Add(
         new JsonStringEnumConverter());
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Angular",
+        policy =>
+        {
+            policy
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 builder.Services.AddSingleton<IFlightStatusProvider, AeroTrackProvider>();
 builder.Services.AddSingleton<IFlightStatusProvider, QuickFlightProvider>();
 builder.Services.AddScoped<FlightStatusAggregator>();
@@ -23,5 +34,5 @@ if (app.Environment.IsDevelopment())
 }
 app.MapGet("/", () => "Hello World!");
 app.MapFlightStatusEndpoints();
-
+app.UseCors("Angular");
 app.Run();
