@@ -14,7 +14,10 @@ public class AeroTrackProvider : IFlightStatusProvider
         {
             "AI101" => new FlightStatusResult
             {
+                Airline = "Air India",
                 FlightNumber = "AI101",
+                DepartureAirport = "DEL",
+                ArrivalAirport = "BOM",
                 Status = UnifiedFlightStatus.Delayed,
                 ScheduledDepartureUtc = new DateTime(2025, 06, 18, 08, 00, 00, DateTimeKind.Utc),
                 ActualDepartureUtc = new DateTime(2025, 06, 18, 08, 45, 00, DateTimeKind.Utc),
@@ -30,7 +33,10 @@ public class AeroTrackProvider : IFlightStatusProvider
 
             "BA202" => new FlightStatusResult
             {
+                Airline = "British Airways",
                 FlightNumber = "BA202",
+                DepartureAirport = "LHR",
+                ArrivalAirport = "JFK",
                 Status = UnifiedFlightStatus.OnTime,
                 ScheduledDepartureUtc = new DateTime(2025, 06, 18, 11, 00, 00, DateTimeKind.Utc),
                 ActualDepartureUtc = new DateTime(2025, 06, 18, 11, 05, 00, DateTimeKind.Utc),

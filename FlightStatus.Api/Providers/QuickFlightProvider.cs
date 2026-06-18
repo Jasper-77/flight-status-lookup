@@ -14,7 +14,10 @@ public class QuickFlightProvider : IFlightStatusProvider
         {
             "AI101" => new FlightStatusResult
             {
+                Airline = "Air India",
                 FlightNumber = "AI101",
+                DepartureAirport = "DEL",
+                ArrivalAirport = "BOM",
                 Status = UnifiedFlightStatus.OnTime,
                 ScheduledDepartureUtc = new DateTime(2025, 06, 18, 08, 00, 00, DateTimeKind.Utc),
                 ScheduledArrivalUtc = new DateTime(2025, 06, 18, 10, 00, 00, DateTimeKind.Utc),
@@ -25,7 +28,10 @@ public class QuickFlightProvider : IFlightStatusProvider
 
             "EK501" => new FlightStatusResult
             {
+                Airline = "Emirates",
                 FlightNumber = "EK501",
+                DepartureAirport = "DXB",
+                ArrivalAirport = "MAA",
                 Status = UnifiedFlightStatus.Cancelled,
                 ScheduledDepartureUtc = new DateTime(2025, 06, 18, 15, 00, 00, DateTimeKind.Utc),
                 ScheduledArrivalUtc = new DateTime(2025, 06, 18, 19, 00, 00, DateTimeKind.Utc),
